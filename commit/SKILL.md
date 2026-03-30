@@ -83,7 +83,7 @@ When creating commits from the CLI, do not embed escaped newlines like `\n` insi
 Prefer one of these patterns:
 
 ```bash
-git commit -m "type(scope): Subject" \
+git commit -m "type: Subject" \
   -m "First paragraph with real line wrapping.
 
 Second paragraph.
@@ -120,7 +120,7 @@ Fixes SENTRY-XXXX
 ### Simple fix
 
 ```
-fix(api): Handle null response in user endpoint
+fix: Handle null response in user endpoint
 
 - The user API returned null for deleted accounts, causing a crash in the
   dashboard when accessing user properties
@@ -131,10 +131,10 @@ fix(api): Handle null response in user endpoint
 Fixes GH-5678
 ```
 
-### Feature with scope
+### Feature
 
 ```
-feat(alerts): Add Slack thread replies for alert updates
+feat: Add Slack thread replies for alert updates
 
 When an alert is updated or resolved, post a reply to the original
 Slack thread instead of creating a new message. This keeps related
@@ -155,7 +155,7 @@ validator class. No behavior change.
 ## Revert Format
 
 ```
-revert: feat(api): Add new endpoint
+revert: feat: Add new endpoint
 
 This reverts commit abc123def456.
 
