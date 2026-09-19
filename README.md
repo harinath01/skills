@@ -1,58 +1,59 @@
 # Skills Repository
 
-This repository contains GitHub Copilot skills that should be installed with `skills.sh`.
+This repository contains agent skills installable with [skills.sh](https://skills.sh/).
 
-## Required folder structure
+## Installation
 
-`skills.sh` expects each skill to be in its own top-level directory. Keep the repository flat at the root level and place a `SKILL.md` file inside each skill directory. The `.installed-version` file is optional/used by the installer to track the installed version.
+Install this repository with the official skills.sh installer:
+
+```bash
+npx skills@latest add harinath01/skills
+```
+
+You can also install a specific skill from the repo:
+
+```bash
+npx skills@latest add harinath01/skills --skill <skill-name>
+```
+
+## Repository structure
+
+This repository follows the layout expected by skills.sh. Each skill is stored in its own top-level directory, and each directory contains a `SKILL.md` file:
 
 ```text
 skills/
 ├── basecamp/
-│   ├── SKILL.md
-│   └── .installed-version
+│   └── SKILL.md
+├── commit/
+│   └── SKILL.md
 ├── create-branch/
-│   ├── SKILL.md
-│   └── .installed-version
+│   └── SKILL.md
 ├── documentation-writer/
-│   ├── SKILL.md
-│   └── .installed-version
+│   └── SKILL.md
 ├── grill-me/
-│   ├── SKILL.md
-│   └── .installed-version
+│   └── SKILL.md
 ├── improve-codebase-architecture/
-│   ├── SKILL.md
-│   └── .installed-version
+│   └── SKILL.md
 ├── tdd/
-│   ├── SKILL.md
-│   └── .installed-version
+│   └── SKILL.md
 └── README.md
 ```
 
 Important notes:
 
-- Do not wrap skills in an extra `skills/` directory unless your `skills.sh` configuration specifically expects it.
-- Each skill directory must contain a `SKILL.md` entry file.
-- Keep the repository root focused on skill folders plus documentation.
+- Each skill directory is a top-level folder in the repo root.
+- Each folder contains a `SKILL.md` file.
+- The directory name should match the skill name used by the installer.
+- This repo does not use an extra nested `skills/` directory wrapper.
 
-## Installing with skills.sh
+## Available skills
 
-From the repository root, install using the `skills.sh` installer:
+- `basecamp`
+- `commit`
+- `create-branch`
+- `documentation-writer`
+- `grill-me`
+- `improve-codebase-architecture`
+- `tdd`
 
-```bash
-./skills.sh install .
-```
-
-If `skills.sh` is installed and available on your `PATH`, this is equivalent:
-
-```bash
-skills.sh install .
-```
-
-You can also point `skills.sh` at the repository directly:
-
-```bash
-skills.sh install https://github.com/harinath01/skills.git
-```
-
-This installs the skills into the location expected by `skills.sh` (for example, the configured agent skills directory such as `~/.agents/skills`).
+For more details, see the official docs at [skills.sh](https://skills.sh/).
