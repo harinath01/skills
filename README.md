@@ -1,33 +1,58 @@
 # Skills Repository
 
-This repository contains agent skills that can be synced to the `.agents` directory.
+This repository contains GitHub Copilot skills that should be installed with `skills.sh`.
 
-## Syncing Skills
+## Required folder structure
 
-To sync skills to the `.agents` directory:
+`skills.sh` expects each skill to be in its own top-level directory. Keep the repository flat at the root level and place a `SKILL.md` file inside each skill directory. The `.installed-version` file is optional/used by the installer to track the installed version.
 
-```bash
-rsync -av --ignore-existing --exclude='.git' --exclude='.gitignore' ./ ~/.agents/skills/
+```text
+skills/
+├── basecamp/
+│   ├── SKILL.md
+│   └── .installed-version
+├── create-branch/
+│   ├── SKILL.md
+│   └── .installed-version
+├── documentation-writer/
+│   ├── SKILL.md
+│   └── .installed-version
+├── grill-me/
+│   ├── SKILL.md
+│   └── .installed-version
+├── improve-codebase-architecture/
+│   ├── SKILL.md
+│   └── .installed-version
+├── tdd/
+│   ├── SKILL.md
+│   └── .installed-version
+└── README.md
 ```
 
-### Explanation
+Important notes:
 
-- `-a` - Archive mode (preserves permissions, timestamps, etc.)
-- `-v` - Verbose output
-- `--ignore-existing` - Skip files that already exist in destination
-- `--exclude='.git'` - Exclude git directory
-- `--exclude='.gitignore'` - Exclude gitignore file
+- Do not wrap skills in an extra `skills/` directory unless your `skills.sh` configuration specifically expects it.
+- Each skill directory must contain a `SKILL.md` entry file.
+- Keep the repository root focused on skill folders plus documentation.
 
-### Alternative: Create a sync script
+## Installing with skills.sh
 
-```bash
-#!/bin/bash
-rsync -av --ignore-existing --exclude='.git' --exclude='.gitignore' ./ ~/.agents/skills/
-```
-
-Save as `sync.sh` and run:
+From the repository root, install using the `skills.sh` installer:
 
 ```bash
-chmod +x sync.sh
-./sync.sh
+./skills.sh install .
 ```
+
+If `skills.sh` is installed and available on your `PATH`, this is equivalent:
+
+```bash
+skills.sh install .
+```
+
+You can also point `skills.sh` at the repository directly:
+
+```bash
+skills.sh install https://github.com/harinath01/skills.git
+```
+
+This installs the skills into the location expected by `skills.sh` (for example, the configured agent skills directory such as `~/.agents/skills`).
